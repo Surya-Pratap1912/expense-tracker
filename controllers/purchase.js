@@ -14,7 +14,7 @@ const purchasepremium = async (req, res) => {
 
     rzp.orders.create({ amount: 2500, currency: "INR" }, async (err, order) => {
       if (err) {
-        console.log("purchase.js error 1 >>   ", err);
+        //console.log("purchase.js error 1 >>   ", err);
         throw new Error(JSON.stringify(err));
       }
 
@@ -31,7 +31,7 @@ const purchasepremium = async (req, res) => {
       return res.status(201).json({ order, key_id: rzp.key_id });
     });
   } catch (err) {
-    console.log("purchase.js error 2 ", err);
+    //console.log("purchase.js error 2 ", err);
     res.status(500).json({ message: "something went wrong in purchase.js", error: err });
   }
 };
@@ -63,7 +63,7 @@ const updatetransectionstatus = async (req, res, next) => {
       });
     }
   } catch (err) {
-    console.log("err in purchase update 2 ", err);
+    //console.log("err in purchase update 2 ", err);
     return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };

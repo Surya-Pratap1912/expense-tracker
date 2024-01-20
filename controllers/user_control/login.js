@@ -1,4 +1,4 @@
-
+const sequelize = require("../../database");
 const User = require("../../models/users");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -21,7 +21,7 @@ exports.login = (req, res, nex) => {
       if (user) {
         bcrypt.compare(password, user.password, (err, result) => {
           if (err) {
-            console.log('err in bcrypt ' ,err);
+            //console.log('err in bcrypt ' ,err);
             res
               .status(500)
               .json({ success: false, message: "something went wrong" });
@@ -49,7 +49,7 @@ exports.login = (req, res, nex) => {
       }
     });
   } catch (err) {
-    console.log("error in login ", err);
+    //console.log("error in login ", err);
     res.status(500).json({ success: false, message: "internal server error" });
   }
 

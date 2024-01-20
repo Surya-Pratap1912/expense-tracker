@@ -2,14 +2,12 @@ console.clear();
 const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose');
-const fs = require('fs');
-//
 const app = express();
 require('dotenv').config();
 
+
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const router = require('./routes/router');
 const navigationRoutes = require('./routes/userRoutes');
 
@@ -20,8 +18,6 @@ app.use(cors(/*{
     methods:['GET', 'PUT', 'DELETE','POST']
 }*/))
 app.use(express.static(path.join(__dirname,'public')));
-
-// app.set('views', 'views');
 
  
 app.use((req, res, next) => {
