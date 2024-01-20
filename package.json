@@ -10,10 +10,7 @@
   },
   "author": "Surya Pratap",
   "license": "ISC",
-  "devDependencies": {
-   
-  },
-  "dependencies": {
+    "dependencies": {
     "aws-sdk": "^2.1439.0",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.18.3",
