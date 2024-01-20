@@ -39,7 +39,6 @@ app.use(morgan('combined',{stream : accLogFiles}));
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const sequelize = require('./database');
 
 const router = require('./routes/router');
 const navigationRoutes = require('./routes/userRoutes');

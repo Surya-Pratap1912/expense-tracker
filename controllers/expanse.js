@@ -1,13 +1,13 @@
 const Expanse = require("../models/expanse");
 const User = require("../models/users");
-const sequelize = require("../database");
+
 const dwnContent = require("../models/downloadedFiles");
 // const users = require('../models/users');
 const S3Services = require("../services/s3services");
 const mongoose = require('mongoose');
 const { startSession } = require('mongoose');
 
-const puppeteer = require('puppeteer');
+
 const expanse = require("../models/expanse");
 
 exports.downloadExpanseAsPdf = async (req, res) => {
