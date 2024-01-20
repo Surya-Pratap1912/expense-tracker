@@ -3,39 +3,9 @@ const express = require('express');
 const path = require('path');
 // const https = require('https');
 const mongoose = require('mongoose');
-const fs = require('fs');
-// const helmet = require('helmet');
 
-const morgan = require('morgan');
 const app = express();
 require('dotenv').config();
-
-// const privateKey = fs.readFileSync('server.key','utf8');
-// const certificate = fs.readFileSync('server.cert','utf8');
-
-
-// app.use(helmet());
-
-
-// app.use(helmet.contentSecurityPolicy({
-//     directives: {
-//       defaultSrc: ["'self'"],
-//       imgSrc: ["'self'", "data:","img.freepik.com"],
-//       scriptSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "https://cdn.jsdelivr.net", "https://checkout.razorpay.com"],
-//     },
-//   }));
-
-//   app.use(
-//     helmet.contentSecurityPolicy({
-//       directives: {
-//         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-//         'img-src': ["'self'", "data:", "img.freepik.com"],
-//       },
-//     })
-//   );
-
-const accLogFiles = fs.createWriteStream(path.join(__dirname,'access.log'),{flags : 'a'});
-app.use(morgan('combined',{stream : accLogFiles}));
 
 const bodyParser = require('body-parser');
 const cors = require('cors');
