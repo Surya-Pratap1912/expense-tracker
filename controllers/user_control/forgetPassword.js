@@ -14,13 +14,13 @@ const apiKey = client.authentications["api-key"];
 apiKey.apiKey = process.env.SIB_API;
 
 exports.forgetPass = async (req, res, next) => {
-  //console.log("in forget-password");
+   // console.log("in forget-password");
   const { mail } = req.body;
-  //console.log(mail);
+   // console.log(mail);
   const uu_id = uuidv4();
   try {
     const user = await User.findOne({'email': mail});
-    //console.log("user found ", user);
+     // console.log("user found ", user);
     // making request true for user
     if (!user) {
       res.json({
@@ -48,16 +48,16 @@ exports.forgetPass = async (req, res, next) => {
         },
       ];
 
-      //console.log("uu_id in forg pass ", uu_id);
+       // console.log("uu_id in forg pass ", uu_id);
       transEmailApi
         .sendTransacEmail({
           sender,
           to: receiver,
           subject: "password reset for getexpanses",
-          textContent: `hey there, here is the password reset link for your getexpanse account  http://54.226.18.204:11000/password/resetpassword/${uu_id}`,
+          textContent: `hey there, here is the password reset link for your getexpanse account  http:// 54.226.18.204:10000/password/resetpassword/${uu_id}`,
         })
         .then((result) => {
-          //console.log('email info ',result)
+           // console.log('email info ',result)
           res.json({
             success: true,
             message:
@@ -65,33 +65,33 @@ exports.forgetPass = async (req, res, next) => {
           }); 
         })
         .catch(err =>{
-          //console.log('err in sending mail ', err)
+           // console.log('err in sending mail ', err)
         });
 
       
     }
   } catch (err) {
-    //console.log("error in try-catch forg pass  ", err);
+     // console.log("error in try-catch forg pass  ", err);
     res.status(500).json(err);
   }
 };
 
 exports.resetPass = async (req, res, next) => {
-  //console.log("................at....... 1..........");
+   // console.log("................at....... 1..........");
   
   const {params, query , body } = req;
-  //console.log("params     ",params);
-  //console.log("query     ",query);
-  //console.log("body     ",body);
+   // console.log("params     ",params);
+   // console.log("query     ",query);
+   // console.log("body     ",body);
   const uu_id = req.params.uu_id;
   try {
-    //console.log("uu_id   ", uu_id);
-    //console.log("................at....... 2..........");
+     // console.log("uu_id   ", uu_id);
+     // console.log("................at....... 2..........");
     const uuid = await Fpr.findOne({'uuid':uu_id});
-    //console.log("................at....... 3..........",uuid);
-    //console.log("uuid  active  ", uuid.isactive);
+     // console.log("................at....... 3..........",uuid);
+     // console.log("uuid  active  ", uuid.isactive);
     if (uuid && uuid.isactive) {
-      //console.log("................at....... 4..........");
+       // console.log("................at....... 4..........");
       res.sendFile(
         path.join(
           __dirname,
@@ -105,30 +105,29 @@ exports.resetPass = async (req, res, next) => {
       res.status(404).send("<h1>page not found</h1>");
     }
     // res.send('<h1>a gya </h1>');
-    //console.log("................at....... 5..........");
+     // console.log("................at....... 5..........");
   } catch (err) {
-    //console.log("................at....... 6..........");
-    //console.log("error in catch of reset passs", err);
-    res.status(500).json({err});
+     // console.log("................at....... 6..........");
+     // console.log("error in catch of reset passs", err);
   }
 };
 
 exports.changePass = async (req, res, next) => {
-  //console.log("................at....... 7..........");
-  //console.log("body in change pass ", req.body);
+   // console.log("................at....... 7..........");
+   // console.log("body in change pass ", req.body);
   const { uu_id, password } = req.body;
   try {
     const uuid = await Fpr.findOne({'uuid': uu_id});
     if (!uuid.isactive) {
       res.status(404).send("<h1>page not found</h1>");
     } else {
-      // console.log("uuid.userId , uuid.isactive", uuid.userId, uuid.isactive);
+      //  // console.log("uuid.userId , uuid.isactive", uuid.userId, uuid.isactive);
       //update pass
       const user = await User.findOne(uuid.userId);
-      //console.log('user ',user);
+       // console.log('user ',user);
       bcrypt.hash(password, 10 /* salt */, async (err, hash) => {
         if(err)
-        //console.log("err in bcrypt ", err);
+         // console.log("err in bcrypt ", err);
         
         user.password = hash;
         await user.save();
@@ -143,7 +142,7 @@ exports.changePass = async (req, res, next) => {
       // res.json('<h1>a gya </h1>');
     }
   } catch (err) {
-    //console.log("error in   catch of change password");
+     // console.log("error in   catch of change password");
     res.status(500).json({ message: "server error" });
   }
 };
