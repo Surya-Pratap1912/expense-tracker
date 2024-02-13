@@ -1,8 +1,6 @@
 const form = document.getElementById("myform");
-// document.gete
 
 form.addEventListener("submit", (e) => {
-  // console.log('i m in')
   e.preventDefault();
   console.log(e);
 
@@ -18,7 +16,7 @@ form.addEventListener("submit", (e) => {
   };
   console.log(user);
   axios
-    .post("http:// 54.226.18.204:10000/users/login", user)
+    .post("http://54.226.18.204:11000/users/login", user)
     .then((res) => {
       console.log(res.data);
       localStorage.setItem('token', res.data.token);

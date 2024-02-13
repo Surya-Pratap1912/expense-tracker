@@ -63,7 +63,6 @@ const updatetransectionstatus = async (req, res, next) => {
       });
     }
   } catch (err) {
-     // console.log("err in purchase update 2 ", err);
     return res.status(500).json({ success: false, message: "Internal Server Error" });
   }
 };

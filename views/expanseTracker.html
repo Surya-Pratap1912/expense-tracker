@@ -10,7 +10,7 @@
   </head>
   <body>
     <br />
-    
+
     <div id="user_and_premium">
       <h2 id="user"></h2>
       <button id="logout">log out</button>
@@ -37,33 +37,37 @@
           <option value="roadside">roadside</option>
         </select>
         <button type="submit" id="add-expanse">Add Expense</button>
-        
+
         <input type="hidden" id="update" value="update" />
       </form>
       <div class="show">
         <div id="premShow">
-        <input type="number" placeholder="0 <= input <= 20 " id="lines" required> 
-        <br>
-        <button id="linesToShow">lines to show</button>
-      </div>
-        <br>
+          <input
+            type="number"
+            placeholder="0 <= input <= 20 "
+            id="lines"
+            required
+          />
+          <br />
+          <button id="linesToShow">lines to show</button>
+        </div>
+        <br />
         <button id="showAll">show all expanses</button>
       </div>
-       
-     
-      <!-- <div class="expanses"> -->
-        <ul id="users"></ul>
-      <!-- </div> -->
+
+      <ul id="users"></ul>
     </div>
     <div id="lead">
       <button id="showLead" value="off">Show Leaderboard</button>
       <ul id="ldrboard"></ul>
-      <button id="downloadFile" >download expanses</button>
+      <button id="downloadFile">download expanses</button>
       <ul id="downloaded"></ul>
     </div>
-    <script defer src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+    ></script>
     <script src="/expanse_tracker/expanse_tracker.js"></script>
     <script src="/expanse_tracker/razorpay.js"></script>
-    
   </body>
 </html>
