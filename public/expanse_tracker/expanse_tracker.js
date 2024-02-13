@@ -90,8 +90,8 @@ function print() {
         ).innerText = `total Expanse ${response.data.totalExpanse}`;
         document.getElementById("premShow").style.visibility = "visible";
 
-        exp_s = response.data.exp.length;
-        arr = response.data.exp;
+        exp_s = response.data.arr.length;
+        arr = response.data.arr;
         mxLines = localStorage.getItem("lines");
         if (+mxLines >= +exp_s) {
           exp_e = 0;

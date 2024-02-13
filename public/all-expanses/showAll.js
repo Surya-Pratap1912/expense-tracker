@@ -25,7 +25,7 @@ function printScreen() {
       const tE = (document.getElementById(
         "tE"
       ).innerText = `${response.data.totalExpanse}`);
-
+      console.log(response.data);
       let exp_s = -1;
       var arr;
       var exp_e = 0;
@@ -36,11 +36,11 @@ function printScreen() {
           "totalExpanse"
         ).innerText = `total Expanse ${response.data.totalExpanse}`;
 
-        console.log(response.data);
+      
         const downloaded = document.getElementById("downloaded");
       }
 
-      response.data.exp.forEach((x) => {
+      response.data.arr.forEach((x) => {
         printList(x);
       });
     });
@@ -102,22 +102,6 @@ dwn.addEventListener("click", async (e) => {
         a.click();
       }
       console.log(result);
-    })
+    })    
     .catch((err) => console.log(err));
-});
-
-document.getElementById("downloadAsPdf").addEventListener("click", async () => {
-  const response = await axios.get("http://54.226.18.204:11000/generate-pdf", {
-    headers: { Authorization: `Bearer ${token}` },
-  });
-
-  const blob = await response.blob();
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "webpage.pdf";
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
 });
